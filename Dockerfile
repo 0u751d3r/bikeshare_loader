@@ -1,15 +1,19 @@
 ARG IMAGE_VARIANT=slim-buster
 ARG OPENJDK_VERSION=8
-ARG PYTHON_VERSION=3.9.8
+ARG PYTHON_VERSION=3.10.4
 
 FROM python:${PYTHON_VERSION}-${IMAGE_VARIANT} AS py3
 FROM openjdk:${OPENJDK_VERSION}-${IMAGE_VARIANT}
 COPY --from=py3 / /
 
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt install -y libgeos-dev
+
 WORKDIR /opt/bikeshare_loader
 
 COPY config/ config/
 COPY src/ src/
+
 COPY build_image.sh build_image.sh
 RUN chmod +x build_image.sh
 
