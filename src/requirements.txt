@@ -1,0 +1,5 @@
+Jinja2==3.1.1
+Shapely==1.8.1.post1
+pyspark==3.2.1
+pytest==7.1.1
+PyYAML==6.0

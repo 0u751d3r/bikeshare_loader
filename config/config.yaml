@@ -1,0 +1,16 @@
+build_config:
+  load_sfo_data:
+    baseloc: {{base_dir}}/landing
+    # these are sections where list of tables need to be added for each input dataset. (i.e. multiple cities)
+    # files in the same group need to have the same schema and format, though format could be an additional parameter
+    # here.
+    output: {{base_dir}}/output/prepared_bikeshare_data
+    memory: 15g
+    stations:
+      - sfo_bikeshare_station_info
+    trips:
+      - sfo_bikeshare_trips
+    zipcodes:
+      - bayarea_zipcodes
+    weather:
+      - weather_california
